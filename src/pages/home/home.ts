@@ -22,7 +22,6 @@ export class HomePage {
     this.menu.swipeEnable(true);    
   } 
  
- 
 
   login() {
     this.navCtrl.push('CategoriasPage');
