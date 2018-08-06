@@ -28,6 +28,15 @@ export class HomePage {
   ionViewDidLeave() { // volta o menu depois que sai da pagina
     this.menu.swipeEnable(true);    
   } 
+
+  ionViewDidEnter() {
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});  
+  }
  
 
   login() {
