@@ -21,7 +21,11 @@ export class CategoriasPage {
   items: CategoriaDTO[];
   bucketUrl: String = API_CONFIG.bucketBaseUrl;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private categoriaService: CategoriaService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams, 
+    private categoriaService: CategoriaService
+  ) {
   }
 
   ionViewDidLoad() {
@@ -33,8 +37,8 @@ export class CategoriasPage {
     )
   }
 
-  showProdutos(){
-    this.navCtrl.push("ProdutosPage");
+  showProdutos(categoria_id: string){
+    this.navCtrl.push("ProdutosPage",{categoria_id: categoria_id});
   }
 
 }
