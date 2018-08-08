@@ -42,6 +42,7 @@ export class AuthService{
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storageServce.setLocalUser(user);
+        this.cartService.createOrClearCart();
 
     }
     
