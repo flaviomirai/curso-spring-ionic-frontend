@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Detalhes Produto</ion-title>
+    <ion-title>ProdutoDetail</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-fab top right edge>
-    <button ion-fab mini><ion-icon name="cart"></ion-icon></button>
+    <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
   </ion-fab>
   <ion-card>
     <img [src]="item?.imageUrl || 'assets/imgs/prod.jpg'"/>

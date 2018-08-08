@@ -6,6 +6,7 @@ import { API_CONFIG } from "../config/api.config";
 import { LocalUser } from "../models/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelper } from "angular2-jwt";
+import { CartService } from "./domain/cart.service";
 
 
 
@@ -14,7 +15,7 @@ export class AuthService{
 
     jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(public http: HttpClient, public storageServce: StorageService){
+    constructor(public http: HttpClient, public storageServce: StorageService, public cartService: CartService){
 
     }
     authenticate(creds: CredenciaisDTO){
