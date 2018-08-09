@@ -14,10 +14,12 @@ import { PedidoService } from '../../services/domain/pedido.service';
   templateUrl: 'order-confirmation.html',
 })
 export class OrderConfirmationPage {
-   pedido: PedidoDTO;
+  pedido: PedidoDTO;
   cartItems: CartIem[];
   cliente: ClienteDTO;
   endereco: EnderecoDTO;
+  codpedido: string;
+
    constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -51,17 +53,26 @@ export class OrderConfirmationPage {
     this.navCtrl.setRoot('CartPage');
   }
 
+  home() {
+    this.navCtrl.setRoot('CategoriasPage');
+  }
+
   checkout(){
     this.pedidoService.insert(this.pedido).subscribe(response => {
       this.cartService.createOrClearCart();
       // testar se o location esta sendo retornado
-      console.log(response.headers.get('location'));
+      this.codpedido = this.extractId(response.headers.get('location'));
     },
     error => {
       if(error.status == 403){
         this.navCtrl.setRoot('HomePage');
       }
     });
+  }
+
+  private extractId(location : string) : string {
+    let position = location.lastIndexOf('/');
+    return location.substring(position + 1, location.length);
   }
   
 } 
